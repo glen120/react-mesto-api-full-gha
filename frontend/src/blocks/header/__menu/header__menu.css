@@ -1,0 +1,17 @@
+.header__menu {
+    margin: 0;
+    display: flex;
+}
+
+@media (max-width: 880px) {
+    .header__menu {
+        margin-right: 19px;
+    }
+}
+
+@media (max-width: 425px) {
+    .header__menu {
+        margin-right: 30px;
+        flex-direction: column;
+    }
+}

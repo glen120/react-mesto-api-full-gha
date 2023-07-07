@@ -1,0 +1,15 @@
+.login {
+    margin: 0 auto;
+    padding: 60px 0 80px;
+    max-width: 358px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (max-width: 425px) {
+    .login {
+        padding: 40px 0 40px;
+        max-width: 260px;
+    }
+}

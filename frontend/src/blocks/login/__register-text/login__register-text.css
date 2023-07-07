@@ -1,0 +1,13 @@
+.login__register-text {
+    margin: 15px 0 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    text-align: center;
+}
+
+@media (max-width: 425px) {
+    .login__register-text {
+        margin: 20px 0 0;
+    }
+}

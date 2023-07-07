@@ -1,0 +1,9 @@
+.card__cell {
+    max-width: 100%;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: relative;
+}

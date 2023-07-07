@@ -1,0 +1,21 @@
+.profile__name {
+    max-width: 100%;
+    margin: 0;
+    font-size: 42px;
+    font-weight: 500;
+    line-height: 48px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .profile__name {
+        max-width: 189px;
+        padding-left: 46px;
+        /*justify-self: end;*/
+        text-align: center;
+        font-size: 27px;
+        line-height: 26px;
+    }
+}

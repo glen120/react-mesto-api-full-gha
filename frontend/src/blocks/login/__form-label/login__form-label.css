@@ -1,0 +1,13 @@
+.login__form-label {
+    margin-bottom: 30px;
+}
+
+.login__form-label:last-of-type {
+    margin-bottom: 216px;
+}
+
+@media (max-width: 425px) {
+    .login__form-label:last-of-type {
+        margin-bottom: 173px;
+    }
+}

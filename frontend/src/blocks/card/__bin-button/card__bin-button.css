@@ -1,0 +1,15 @@
+.card__bin-button {
+    width: 18px;
+    height: 19px;
+    border: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: url("../../../images/bin-button.svg") center no-repeat;
+    z-index: 1;
+}
+
+.card__bin-button:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
