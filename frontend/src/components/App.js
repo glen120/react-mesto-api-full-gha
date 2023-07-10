@@ -36,7 +36,6 @@ export default function App() {
     const [infoTooltipData, setInfoTooltipData] = useState({successReg: false, message: ""});
     const [isInfoTooltipPopupOpen, setIsInfoTooltipPopupOpen] = useState(false);
     const [isLogin, setIsLogin] = useState(false);
-    const [email, setEmail] = useState("");
 
     const navigate = useNavigate();
 
@@ -120,7 +119,7 @@ export default function App() {
 
     // Функция, ставящая и убирающая лайк карточке
     function handleCardLike(card) {
-        const isLiked = card.likes.some(person => person._id === currentUser._id);
+        const isLiked = card.likes.some(id => id === currentUser._id);
         api.changeLike(card._id, !isLiked)
             .then(newCard => {
                 setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
@@ -160,6 +159,7 @@ export default function App() {
             .then((res) => {
                 if (res.token) {
                     localStorage.setItem("token", res.token);
+                    api.setToken(res.token);
                     setIsLogin(true);
                     navigate("/mesto");
                 }
@@ -175,6 +175,7 @@ export default function App() {
     function handleLogout() {
         setIsLogin(false);
         localStorage.removeItem("token");
+        api.setToken(null);
         navigate("/sign-in");
     }
 
@@ -183,10 +184,10 @@ export default function App() {
         const token = localStorage.getItem("token");
         if (token) {
             auth.checkToken(token)
-                .then((res) => {
+                .then(() => {
+                    api.setToken(token);
                     setIsLogin(true);
-                    setEmail(res.data.email);
-                    navigate("/react-mesto-auth", {replace: true});
+                    navigate("/mesto", {replace: true});
                 })
                 .catch((err) => console.log(err));
         }
@@ -195,7 +196,7 @@ export default function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
         <Header
-            userEmail={email}
+            userEmail={currentUser.email}
             isLogin={isLogin}
             isLogout={handleLogout}
         />
@@ -211,10 +212,10 @@ export default function App() {
             />
             <Route
                 path="*"
-                element={isLogin ? <Navigate to="/react-mesto-auth" /> : <Navigate to="/sign-in" />}
+                element={isLogin ? <Navigate to="/mesto" /> : <Navigate to="/sign-in" />}
             />
             <Route
-                path="/react-mesto-auth"
+                path="/mesto"
                 element={
                     <ProtectedRoute
                         isLogin={isLogin}

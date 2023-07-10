@@ -15,18 +15,23 @@ class Api {
         }
     }
 
+    // Устанавливаем токен
+    setToken(token) {
+        this._headers.authorization = `Bearer ${token}`;
+    }
+
     // Запрашиваем начальные данные пользователя
     getUserInfo() {
-        return fetch(`${this._url}users/me`, {
+        return fetch(`${this._url}/users/me`, {
             method: "GET",
-            headers: this._headers
+            headers: this._headers,
         })
             .then((res) => this._checkResponse(res));
     }
 
     // Запрашиваем начальные карточки
     getInitialCards() {
-        return fetch(`${this._url}cards`, {
+        return fetch(`${this._url}/cards`, {
             method: "GET",
             headers: this._headers
         })
@@ -35,7 +40,7 @@ class Api {
 
     // Меняем аватар пользователя
     editAvatar(body) {
-        return fetch(`${this._url}users/me/avatar`, {
+        return fetch(`${this._url}/users/me/avatar`, {
             method: "PATCH",
             headers: this._headers,
             body:JSON.stringify(body)
@@ -45,7 +50,7 @@ class Api {
 
     // Редактируем данные пользователя
     editProfile(body) {
-        return fetch(`${this._url}users/me`, {
+        return fetch(`${this._url}/users/me`, {
             method: "PATCH",
             headers: this._headers,
             body: JSON.stringify(body)

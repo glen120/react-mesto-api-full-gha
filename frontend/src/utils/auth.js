@@ -1,4 +1,4 @@
-import {auth_url} from "./utils.js";
+import {apiConfig} from "./utils.js";
 
 class Auth {
     constructor(url) {
@@ -54,6 +54,6 @@ class Auth {
     }
 }
 
-const auth = new Auth(auth_url);
+const auth = new Auth(apiConfig.url);
 
 export default auth;
