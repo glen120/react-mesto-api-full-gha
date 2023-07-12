@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
@@ -8,8 +10,10 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const app = express();
 
-const { PORT = 3000 } = process.env;
-const DB_URL = 'mongodb://127.0.0.1:27017/mestodb';
+const {
+  PORT = 3000,
+  DB_URL = 'mongodb://127.0.0.1:27017/mestodb',
+} = process.env;
 
 mongoose
   .connect(DB_URL)
@@ -26,6 +30,13 @@ app.use(express.json());
 app.use(cors());
 
 app.use(requestLogger);
+
+//Краш-тест сервера
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.use(router);
 

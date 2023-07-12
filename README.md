@@ -7,12 +7,12 @@
 В данном проекте реализовано:
 
 
-Адрес репозитория: https://github.com/...
+Адрес репозитория: https://github.com/glen120/react-mesto-api-full-gha
 
 ### Ссылки на проект
 
-IP-адрес x.x.x.x
+IP-адрес 158.160.108.171
 
-Frontend https://...
+Frontend https://mesto.glen120.nomoreparties.sbs
 
-Backend https://...
+Backend https://api.mesto.glen120.nomoredomains.work
